@@ -1,0 +1,17 @@
+===========================================================================
+file               decision        uncertain                    V*                  cost
+===========================================================================
+X00016469612       AUTO_APPROVE    address,date,total           total                  2
+X00016469619       REVIEW          address,date,total           total                  2
+X00016469620       MANAGER_REVIEW  company,date,total           -                      0
+X00016469622       AUTO_APPROVE    address,date,total           total                  2
+X00016469623       MANAGER_REVIEW  address,date,total           -                      0
+X00016469669       REVIEW          address,date,total           total                  2
+X00016469672       MANAGER_REVIEW  address,date,total           -                      0
+X00016469676       MANAGER_REVIEW  address,total                total                  2
+X51005200938       MANAGER_REVIEW  address,company,date,total   total                  2
+X51005230617       MANAGER_REVIEW  address,total                total                  2
+===========================================================================
+
+Note: V* is the minimum-cost set of fields whose verification
+makes the downstream decision invariant under remaining uncertainty.

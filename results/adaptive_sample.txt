@@ -1,0 +1,95 @@
+
+======================================================================
+X00016469612.json
+  initial decision : AUTO_APPROVE
+  final decision   : AUTO_APPROVE
+  total cost       : 2
+  steps            : 1
+  terminated by    : invariance
+    step 1: verify total    impact=0.545 cost=2 -> AUTO_APPROVE (invariant=True)
+
+======================================================================
+X00016469619.json
+  initial decision : REVIEW
+  final decision   : MANAGER_REVIEW
+  total cost       : 2
+  steps            : 1
+  terminated by    : invariance
+    step 1: verify total    impact=1.000 cost=2 -> MANAGER_REVIEW (invariant=True)
+
+======================================================================
+X00016469620.json
+  initial decision : MANAGER_REVIEW
+  final decision   : MANAGER_REVIEW
+  total cost       : 0
+  steps            : 0
+  terminated by    : invariance
+    (no verification needed)
+
+======================================================================
+X00016469622.json
+  initial decision : AUTO_APPROVE
+  final decision   : MANAGER_REVIEW
+  total cost       : 3
+  steps            : 2
+  terminated by    : invariance
+    step 1: verify date     impact=0.000 cost=1 -> AUTO_APPROVE (invariant=False)
+    step 2: verify total    impact=0.000 cost=2 -> MANAGER_REVIEW (invariant=True)
+
+======================================================================
+X00016469623.json
+  initial decision : MANAGER_REVIEW
+  final decision   : MANAGER_REVIEW
+  total cost       : 0
+  steps            : 0
+  terminated by    : invariance
+    (no verification needed)
+
+======================================================================
+X00016469669.json
+  initial decision : REVIEW
+  final decision   : MANAGER_REVIEW
+  total cost       : 2
+  steps            : 1
+  terminated by    : invariance
+    step 1: verify total    impact=1.000 cost=2 -> MANAGER_REVIEW (invariant=True)
+
+======================================================================
+X00016469672.json
+  initial decision : MANAGER_REVIEW
+  final decision   : MANAGER_REVIEW
+  total cost       : 0
+  steps            : 0
+  terminated by    : invariance
+    (no verification needed)
+
+======================================================================
+X00016469676.json
+  initial decision : MANAGER_REVIEW
+  final decision   : MANAGER_REVIEW
+  total cost       : 2
+  steps            : 1
+  terminated by    : invariance
+    step 1: verify total    impact=0.000 cost=2 -> MANAGER_REVIEW (invariant=True)
+
+======================================================================
+X51005200938.json
+  initial decision : MANAGER_REVIEW
+  final decision   : MANAGER_REVIEW
+  total cost       : 4
+  steps            : 3
+  terminated by    : invariance
+    step 1: verify company  impact=0.000 cost=1 -> MANAGER_REVIEW (invariant=False)
+    step 2: verify date     impact=0.000 cost=1 -> MANAGER_REVIEW (invariant=False)
+    step 3: verify total    impact=0.000 cost=2 -> MANAGER_REVIEW (invariant=True)
+
+======================================================================
+X51005230617.json
+  initial decision : MANAGER_REVIEW
+  final decision   : MANAGER_REVIEW
+  total cost       : 2
+  steps            : 1
+  terminated by    : invariance
+    step 1: verify total    impact=0.000 cost=2 -> MANAGER_REVIEW (invariant=True)
+
+======================================================================
