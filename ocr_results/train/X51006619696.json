@@ -1,0 +1,45 @@
+{
+  "id": "X51006619696",
+  "image_path": "/Users/aishwaryasuresh/Downloads/SROIE2019/train/img/X51006619696.jpg",
+  "words": [
+    {
+      "text": "=",
+      "confidence": 28.0,
+      "bbox": {
+        "x": 178,
+        "y": 1675,
+        "width": 22,
+        "height": 2
+      },
+      "block_num": 2,
+      "par_num": 1,
+      "line_num": 1
+    },
+    {
+      "text": "a",
+      "confidence": 0.0,
+      "bbox": {
+        "x": 212,
+        "y": 1671,
+        "width": 115,
+        "height": 6
+      },
+      "block_num": 2,
+      "par_num": 1,
+      "line_num": 1
+    },
+    {
+      "text": "ee",
+      "confidence": 25.0,
+      "bbox": {
+        "x": 451,
+        "y": 1616,
+        "width": 144,
+        "height": 61
+      },
+      "block_num": 2,
+      "par_num": 1,
+      "line_num": 1
+    }
+  ]
+}

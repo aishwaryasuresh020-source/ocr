@@ -1,0 +1,1293 @@
+{
+  "id": "X51006502540",
+  "image_path": "/Users/aishwaryasuresh/Downloads/SROIE2019/test/img/X51006502540.jpg",
+  "words": [
+    {
+      "text": "Gerbang",
+      "confidence": 92.0,
+      "bbox": {
+        "x": 71,
+        "y": 175,
+        "width": 91,
+        "height": 27
+      },
+      "block_num": 1,
+      "par_num": 1,
+      "line_num": 1
+    },
+    {
+      "text": "Alaf",
+      "confidence": 91.0,
+      "bbox": {
+        "x": 178,
+        "y": 174,
+        "width": 50,
+        "height": 24
+      },
+      "block_num": 1,
+      "par_num": 1,
+      "line_num": 1
+    },
+    {
+      "text": "Restaurants",
+      "confidence": 96.0,
+      "bbox": {
+        "x": 245,
+        "y": 175,
+        "width": 144,
+        "height": 22
+      },
+      "block_num": 1,
+      "par_num": 1,
+      "line_num": 1
+    },
+    {
+      "text": "Sdn",
+      "confidence": 88.0,
+      "bbox": {
+        "x": 405,
+        "y": 172,
+        "width": 37,
+        "height": 24
+      },
+      "block_num": 1,
+      "par_num": 1,
+      "line_num": 1
+    },
+    {
+      "text": "Bhd",
+      "confidence": 92.0,
+      "bbox": {
+        "x": 458,
+        "y": 172,
+        "width": 38,
+        "height": 24
+      },
+      "block_num": 1,
+      "par_num": 1,
+      "line_num": 1
+    },
+    {
+      "text": "(65351-M)",
+      "confidence": 81.0,
+      "bbox": {
+        "x": 220,
+        "y": 207,
+        "width": 113,
+        "height": 27
+      },
+      "block_num": 1,
+      "par_num": 1,
+      "line_num": 2
+    },
+    {
+      "text": "Licensee",
+      "confidence": 96.0,
+      "bbox": {
+        "x": 140,
+        "y": 243,
+        "width": 103,
+        "height": 22
+      },
+      "block_num": 1,
+      "par_num": 1,
+      "line_num": 3
+    },
+    {
+      "text": "of",
+      "confidence": 96.0,
+      "bbox": {
+        "x": 259,
+        "y": 241,
+        "width": 22,
+        "height": 23
+      },
+      "block_num": 1,
+      "par_num": 1,
+      "line_num": 3
+    },
+    {
+      "text": "McDonald's",
+      "confidence": 82.0,
+      "bbox": {
+        "x": 298,
+        "y": 239,
+        "width": 131,
+        "height": 25
+      },
+      "block_num": 1,
+      "par_num": 1,
+      "line_num": 3
+    },
+    {
+      "text": "Level",
+      "confidence": 96.0,
+      "bbox": {
+        "x": 33,
+        "y": 276,
+        "width": 60,
+        "height": 24
+      },
+      "block_num": 1,
+      "par_num": 1,
+      "line_num": 4
+    },
+    {
+      "text": "6,",
+      "confidence": 93.0,
+      "bbox": {
+        "x": 112,
+        "y": 277,
+        "width": 21,
+        "height": 25
+      },
+      "block_num": 1,
+      "par_num": 1,
+      "line_num": 4
+    },
+    {
+      "text": "Bangunen",
+      "confidence": 84.0,
+      "bbox": {
+        "x": 152,
+        "y": 277,
+        "width": 104,
+        "height": 25
+      },
+      "block_num": 1,
+      "par_num": 1,
+      "line_num": 4
+    },
+    {
+      "text": "TH,",
+      "confidence": 93.0,
+      "bbox": {
+        "x": 272,
+        "y": 275,
+        "width": 35,
+        "height": 26
+      },
+      "block_num": 1,
+      "par_num": 1,
+      "line_num": 4
+    },
+    {
+      "text": "Damansara",
+      "confidence": 88.0,
+      "bbox": {
+        "x": 325,
+        "y": 275,
+        "width": 118,
+        "height": 22
+      },
+      "block_num": 1,
+      "par_num": 1,
+      "line_num": 4
+    },
+    {
+      "text": "Uptown3",
+      "confidence": 80.0,
+      "bbox": {
+        "x": 458,
+        "y": 273,
+        "width": 92,
+        "height": 26
+      },
+      "block_num": 1,
+      "par_num": 1,
+      "line_num": 4
+    },
+    {
+      "text": "No.3,",
+      "confidence": 96.0,
+      "bbox": {
+        "x": 33,
+        "y": 311,
+        "width": 60,
+        "height": 24
+      },
+      "block_num": 1,
+      "par_num": 1,
+      "line_num": 5
+    },
+    {
+      "text": "Jalan",
+      "confidence": 92.0,
+      "bbox": {
+        "x": 112,
+        "y": 309,
+        "width": 65,
+        "height": 23
+      },
+      "block_num": 1,
+      "par_num": 1,
+      "line_num": 5
+    },
+    {
+      "text": "$$21/39,47400",
+      "confidence": 89.0,
+      "bbox": {
+        "x": 192,
+        "y": 308,
+        "width": 171,
+        "height": 25
+      },
+      "block_num": 1,
+      "par_num": 1,
+      "line_num": 5
+    },
+    {
+      "text": "Petaling",
+      "confidence": 96.0,
+      "bbox": {
+        "x": 379,
+        "y": 306,
+        "width": 104,
+        "height": 26
+      },
+      "block_num": 1,
+      "par_num": 1,
+      "line_num": 5
+    },
+    {
+      "text": "Jaya",
+      "confidence": 96.0,
+      "bbox": {
+        "x": 499,
+        "y": 307,
+        "width": 51,
+        "height": 25
+      },
+      "block_num": 1,
+      "par_num": 1,
+      "line_num": 5
+    },
+    {
+      "text": "Selangor",
+      "confidence": 95.0,
+      "bbox": {
+        "x": 233,
+        "y": 341,
+        "width": 104,
+        "height": 25
+      },
+      "block_num": 1,
+      "par_num": 1,
+      "line_num": 6
+    },
+    {
+      "text": "(GST",
+      "confidence": 90.0,
+      "bbox": {
+        "x": 128,
+        "y": 374,
+        "width": 48,
+        "height": 25
+      },
+      "block_num": 1,
+      "par_num": 1,
+      "line_num": 7
+    },
+    {
+      "text": "ID",
+      "confidence": 93.0,
+      "bbox": {
+        "x": 194,
+        "y": 374,
+        "width": 23,
+        "height": 22
+      },
+      "block_num": 1,
+      "par_num": 1,
+      "line_num": 7
+    },
+    {
+      "text": "No:",
+      "confidence": 95.0,
+      "bbox": {
+        "x": 234,
+        "y": 375,
+        "width": 33,
+        "height": 21
+      },
+      "block_num": 1,
+      "par_num": 1,
+      "line_num": 7
+    },
+    {
+      "text": "600504064064)",
+      "confidence": 74.0,
+      "bbox": {
+        "x": 286,
+        "y": 372,
+        "width": 169,
+        "height": 24
+      },
+      "block_num": 1,
+      "par_num": 1,
+      "line_num": 7
+    },
+    {
+      "text": "McDonald's",
+      "confidence": 22.0,
+      "bbox": {
+        "x": 140,
+        "y": 405,
+        "width": 131,
+        "height": 24
+      },
+      "block_num": 1,
+      "par_num": 1,
+      "line_num": 8
+    },
+    {
+      "text": "Silang(",
+      "confidence": 71.0,
+      "bbox": {
+        "x": 286,
+        "y": 404,
+        "width": 88,
+        "height": 27
+      },
+      "block_num": 1,
+      "par_num": 1,
+      "line_num": 8
+    },
+    {
+      "text": "#005}",
+      "confidence": 68.0,
+      "bbox": {
+        "x": 382,
+        "y": 403,
+        "width": 60,
+        "height": 27
+      },
+      "block_num": 1,
+      "par_num": 1,
+      "line_num": 8
+    },
+    {
+      "text": "Tel",
+      "confidence": 96.0,
+      "bbox": {
+        "x": 154,
+        "y": 439,
+        "width": 33,
+        "height": 23
+      },
+      "block_num": 1,
+      "par_num": 1,
+      "line_num": 9
+    },
+    {
+      "text": "No.",
+      "confidence": 82.0,
+      "bbox": {
+        "x": 208,
+        "y": 440,
+        "width": 32,
+        "height": 22
+      },
+      "block_num": 1,
+      "par_num": 1,
+      "line_num": 9
+    },
+    {
+      "text": "03-2921-5235",
+      "confidence": 57.0,
+      "bbox": {
+        "x": 273,
+        "y": 437,
+        "width": 158,
+        "height": 24
+      },
+      "block_num": 1,
+      "par_num": 1,
+      "line_num": 9
+    },
+    {
+      "text": "TAX",
+      "confidence": 91.0,
+      "bbox": {
+        "x": 221,
+        "y": 473,
+        "width": 36,
+        "height": 22
+      },
+      "block_num": 1,
+      "par_num": 1,
+      "line_num": 10
+    },
+    {
+      "text": "INVOICE",
+      "confidence": 50.0,
+      "bbox": {
+        "x": 275,
+        "y": 471,
+        "width": 88,
+        "height": 23
+      },
+      "block_num": 1,
+      "par_num": 1,
+      "line_num": 10
+    },
+    {
+      "text": "MFY",
+      "confidence": 89.0,
+      "bbox": {
+        "x": 234,
+        "y": 539,
+        "width": 38,
+        "height": 23
+      },
+      "block_num": 2,
+      "par_num": 1,
+      "line_num": 1
+    },
+    {
+      "text": "Side",
+      "confidence": 91.0,
+      "bbox": {
+        "x": 287,
+        "y": 538,
+        "width": 52,
+        "height": 23
+      },
+      "block_num": 2,
+      "par_num": 1,
+      "line_num": 1
+    },
+    {
+      "text": "|",
+      "confidence": 75.0,
+      "bbox": {
+        "x": 358,
+        "y": 539,
+        "width": 4,
+        "height": 21
+      },
+      "block_num": 2,
+      "par_num": 1,
+      "line_num": 1
+    },
+    {
+      "text": "INV",
+      "confidence": 56.0,
+      "bbox": {
+        "x": 36,
+        "y": 608,
+        "width": 49,
+        "height": 22
+      },
+      "block_num": 3,
+      "par_num": 1,
+      "line_num": 1
+    },
+    {
+      "text": "0000513000039",
+      "confidence": 0.0,
+      "bbox": {
+        "x": 101,
+        "y": 606,
+        "width": 197,
+        "height": 24
+      },
+      "block_num": 3,
+      "par_num": 1,
+      "line_num": 1
+    },
+    {
+      "text": "10",
+      "confidence": 0.0,
+      "bbox": {
+        "x": 275,
+        "y": 602,
+        "width": 27,
+        "height": 39
+      },
+      "block_num": 3,
+      "par_num": 1,
+      "line_num": 1
+    },
+    {
+      "text": "ORD",
+      "confidence": 95.0,
+      "bbox": {
+        "x": 34,
+        "y": 641,
+        "width": 38,
+        "height": 22
+      },
+      "block_num": 3,
+      "par_num": 1,
+      "line_num": 2
+    },
+    {
+      "text": "#17",
+      "confidence": 91.0,
+      "bbox": {
+        "x": 88,
+        "y": 641,
+        "width": 37,
+        "height": 21
+      },
+      "block_num": 3,
+      "par_num": 1,
+      "line_num": 2
+    },
+    {
+      "text": "-REG",
+      "confidence": 90.0,
+      "bbox": {
+        "x": 142,
+        "y": 640,
+        "width": 50,
+        "height": 22
+      },
+      "block_num": 3,
+      "par_num": 1,
+      "line_num": 2
+    },
+    {
+      "text": "#13-",
+      "confidence": 86.0,
+      "bbox": {
+        "x": 208,
+        "y": 640,
+        "width": 49,
+        "height": 21
+      },
+      "block_num": 3,
+      "par_num": 1,
+      "line_num": 2
+    },
+    {
+      "text": "27/04/2018",
+      "confidence": 94.0,
+      "bbox": {
+        "x": 274,
+        "y": 638,
+        "width": 131,
+        "height": 25
+      },
+      "block_num": 3,
+      "par_num": 1,
+      "line_num": 2
+    },
+    {
+      "text": "15:20:22",
+      "confidence": 94.0,
+      "bbox": {
+        "x": 423,
+        "y": 637,
+        "width": 102,
+        "height": 22
+      },
+      "block_num": 3,
+      "par_num": 1,
+      "line_num": 2
+    },
+    {
+      "text": "avy",
+      "confidence": 47.0,
+      "bbox": {
+        "x": 34,
+        "y": 673,
+        "width": 38,
+        "height": 23
+      },
+      "block_num": 4,
+      "par_num": 1,
+      "line_num": 1
+    },
+    {
+      "text": "ITeM",
+      "confidence": 73.0,
+      "bbox": {
+        "x": 89,
+        "y": 673,
+        "width": 50,
+        "height": 22
+      },
+      "block_num": 4,
+      "par_num": 1,
+      "line_num": 1
+    },
+    {
+      "text": "TOTAL",
+      "confidence": 95.0,
+      "bbox": {
+        "x": 489,
+        "y": 669,
+        "width": 62,
+        "height": 22
+      },
+      "block_num": 4,
+      "par_num": 1,
+      "line_num": 1
+    },
+    {
+      "text": "44",
+      "confidence": 75.0,
+      "bbox": {
+        "x": 61,
+        "y": 706,
+        "width": 38,
+        "height": 21
+      },
+      "block_num": 4,
+      "par_num": 1,
+      "line_num": 2
+    },
+    {
+      "text": "Nasi",
+      "confidence": 91.0,
+      "bbox": {
+        "x": 116,
+        "y": 705,
+        "width": 47,
+        "height": 22
+      },
+      "block_num": 4,
+      "par_num": 1,
+      "line_num": 2
+    },
+    {
+      "text": "Lemak",
+      "confidence": 87.0,
+      "bbox": {
+        "x": 182,
+        "y": 704,
+        "width": 63,
+        "height": 22
+      },
+      "block_num": 4,
+      "par_num": 1,
+      "line_num": 2
+    },
+    {
+      "text": "durger",
+      "confidence": 10.0,
+      "bbox": {
+        "x": 261,
+        "y": 704,
+        "width": 77,
+        "height": 24
+      },
+      "block_num": 4,
+      "par_num": 1,
+      "line_num": 2
+    },
+    {
+      "text": "75.80",
+      "confidence": 83.0,
+      "bbox": {
+        "x": 489,
+        "y": 701,
+        "width": 63,
+        "height": 22
+      },
+      "block_num": 4,
+      "par_num": 1,
+      "line_num": 2
+    },
+    {
+      "text": "4M",
+      "confidence": 53.0,
+      "bbox": {
+        "x": 88,
+        "y": 738,
+        "width": 38,
+        "height": 22
+      },
+      "block_num": 4,
+      "par_num": 1,
+      "line_num": 3
+    },
+    {
+      "text": "Fries",
+      "confidence": 93.0,
+      "bbox": {
+        "x": 143,
+        "y": 737,
+        "width": 63,
+        "height": 23
+      },
+      "block_num": 4,
+      "par_num": 1,
+      "line_num": 3
+    },
+    {
+      "text": "4M",
+      "confidence": 66.0,
+      "bbox": {
+        "x": 89,
+        "y": 771,
+        "width": 37,
+        "height": 22
+      },
+      "block_num": 4,
+      "par_num": 1,
+      "line_num": 4
+    },
+    {
+      "text": "100P",
+      "confidence": 77.0,
+      "bbox": {
+        "x": 145,
+        "y": 770,
+        "width": 47,
+        "height": 22
+      },
+      "block_num": 4,
+      "par_num": 1,
+      "line_num": 4
+    },
+    {
+      "text": "lus",
+      "confidence": 86.0,
+      "bbox": {
+        "x": 199,
+        "y": 769,
+        "width": 33,
+        "height": 23
+      },
+      "block_num": 4,
+      "par_num": 1,
+      "line_num": 4
+    },
+    {
+      "text": "2",
+      "confidence": 77.0,
+      "bbox": {
+        "x": 62,
+        "y": 804,
+        "width": 11,
+        "height": 22
+      },
+      "block_num": 4,
+      "par_num": 1,
+      "line_num": 5
+    },
+    {
+      "text": "4",
+      "confidence": 77.0,
+      "bbox": {
+        "x": 89,
+        "y": 804,
+        "width": 11,
+        "height": 21
+      },
+      "block_num": 4,
+      "par_num": 1,
+      "line_num": 5
+    },
+    {
+      "text": "McC",
+      "confidence": 82.0,
+      "bbox": {
+        "x": 115,
+        "y": 803,
+        "width": 38,
+        "height": 22
+      },
+      "block_num": 4,
+      "par_num": 1,
+      "line_num": 5
+    },
+    {
+      "text": "Deluxe",
+      "confidence": 96.0,
+      "bbox": {
+        "x": 169,
+        "y": 802,
+        "width": 77,
+        "height": 23
+      },
+      "block_num": 4,
+      "par_num": 1,
+      "line_num": 5
+    },
+    {
+      "text": "259,00",
+      "confidence": 62.0,
+      "bbox": {
+        "x": 488,
+        "y": 800,
+        "width": 65,
+        "height": 22
+      },
+      "block_num": 4,
+      "par_num": 1,
+      "line_num": 5
+    },
+    {
+      "text": "2",
+      "confidence": 81.0,
+      "bbox": {
+        "x": 89,
+        "y": 837,
+        "width": 11,
+        "height": 22
+      },
+      "block_num": 4,
+      "par_num": 1,
+      "line_num": 6
+    },
+    {
+      "text": "M",
+      "confidence": 81.0,
+      "bbox": {
+        "x": 116,
+        "y": 836,
+        "width": 11,
+        "height": 23
+      },
+      "block_num": 4,
+      "par_num": 1,
+      "line_num": 6
+    },
+    {
+      "text": "Coke",
+      "confidence": 95.0,
+      "bbox": {
+        "x": 142,
+        "y": 835,
+        "width": 51,
+        "height": 24
+      },
+      "block_num": 4,
+      "par_num": 1,
+      "line_num": 6
+    },
+    {
+      "text": "2M",
+      "confidence": 51.0,
+      "bbox": {
+        "x": 89,
+        "y": 870,
+        "width": 38,
+        "height": 23
+      },
+      "block_num": 4,
+      "par_num": 1,
+      "line_num": 7
+    },
+    {
+      "text": "Fries",
+      "confidence": 84.0,
+      "bbox": {
+        "x": 144,
+        "y": 869,
+        "width": 63,
+        "height": 23
+      },
+      "block_num": 4,
+      "par_num": 1,
+      "line_num": 7
+    },
+    {
+      "text": "1",
+      "confidence": 71.0,
+      "bbox": {
+        "x": 65,
+        "y": 904,
+        "width": 5,
+        "height": 21
+      },
+      "block_num": 4,
+      "par_num": 1,
+      "line_num": 8
+    },
+    {
+      "text": "MDS",
+      "confidence": 71.0,
+      "bbox": {
+        "x": 89,
+        "y": 903,
+        "width": 38,
+        "height": 23
+      },
+      "block_num": 4,
+      "par_num": 1,
+      "line_num": 8
+    },
+    {
+      "text": "Charge",
+      "confidence": 69.0,
+      "bbox": {
+        "x": 143,
+        "y": 902,
+        "width": 77,
+        "height": 27
+      },
+      "block_num": 4,
+      "par_num": 1,
+      "line_num": 8
+    },
+    {
+      "text": "4.25",
+      "confidence": 80.0,
+      "bbox": {
+        "x": 504,
+        "y": 900,
+        "width": 50,
+        "height": 23
+      },
+      "block_num": 4,
+      "par_num": 1,
+      "line_num": 8
+    },
+    {
+      "text": "Other",
+      "confidence": 96.0,
+      "bbox": {
+        "x": 36,
+        "y": 970,
+        "width": 65,
+        "height": 22
+      },
+      "block_num": 4,
+      "par_num": 1,
+      "line_num": 9
+    },
+    {
+      "text": "Total",
+      "confidence": 96.0,
+      "bbox": {
+        "x": 117,
+        "y": 968,
+        "width": 61,
+        "height": 23
+      },
+      "block_num": 4,
+      "par_num": 1,
+      "line_num": 9
+    },
+    {
+      "text": "(inc)",
+      "confidence": 77.0,
+      "bbox": {
+        "x": 199,
+        "y": 967,
+        "width": 59,
+        "height": 26
+      },
+      "block_num": 4,
+      "par_num": 1,
+      "line_num": 9
+    },
+    {
+      "text": "GST)",
+      "confidence": 94.0,
+      "bbox": {
+        "x": 277,
+        "y": 967,
+        "width": 48,
+        "height": 25
+      },
+      "block_num": 4,
+      "par_num": 1,
+      "line_num": 9
+    },
+    {
+      "text": "109.05",
+      "confidence": 80.0,
+      "bbox": {
+        "x": 479,
+        "y": 965,
+        "width": 75,
+        "height": 23
+      },
+      "block_num": 4,
+      "par_num": 1,
+      "line_num": 9
+    },
+    {
+      "text": "Total",
+      "confidence": 95.0,
+      "bbox": {
+        "x": 38,
+        "y": 1001,
+        "width": 60,
+        "height": 23
+      },
+      "block_num": 4,
+      "par_num": 1,
+      "line_num": 10
+    },
+    {
+      "text": "Rounded",
+      "confidence": 91.0,
+      "bbox": {
+        "x": 117,
+        "y": 1000,
+        "width": 91,
+        "height": 23
+      },
+      "block_num": 4,
+      "par_num": 1,
+      "line_num": 10
+    },
+    {
+      "text": "109.05",
+      "confidence": 87.0,
+      "bbox": {
+        "x": 480,
+        "y": 998,
+        "width": 74,
+        "height": 22
+      },
+      "block_num": 4,
+      "par_num": 1,
+      "line_num": 10
+    },
+    {
+      "text": "Cash",
+      "confidence": 92.0,
+      "bbox": {
+        "x": 37,
+        "y": 1033,
+        "width": 51,
+        "height": 24
+      },
+      "block_num": 4,
+      "par_num": 1,
+      "line_num": 11
+    },
+    {
+      "text": "Tendered",
+      "confidence": 91.0,
+      "bbox": {
+        "x": 104,
+        "y": 1033,
+        "width": 104,
+        "height": 23
+      },
+      "block_num": 4,
+      "par_num": 1,
+      "line_num": 11
+    },
+    {
+      "text": "150.60",
+      "confidence": 95.0,
+      "bbox": {
+        "x": 479,
+        "y": 1030,
+        "width": 76,
+        "height": 23
+      },
+      "block_num": 4,
+      "par_num": 1,
+      "line_num": 11
+    },
+    {
+      "text": "Change",
+      "confidence": 96.0,
+      "bbox": {
+        "x": 37,
+        "y": 1067,
+        "width": 78,
+        "height": 23
+      },
+      "block_num": 4,
+      "par_num": 1,
+      "line_num": 12
+    },
+    {
+      "text": "49.98",
+      "confidence": 53.0,
+      "bbox": {
+        "x": 491,
+        "y": 1063,
+        "width": 64,
+        "height": 21
+      },
+      "block_num": 4,
+      "par_num": 1,
+      "line_num": 12
+    },
+    {
+      "text": "TOTAL",
+      "confidence": 70.0,
+      "bbox": {
+        "x": 39,
+        "y": 1130,
+        "width": 63,
+        "height": 22
+      },
+      "block_num": 4,
+      "par_num": 1,
+      "line_num": 13
+    },
+    {
+      "text": "INCLUDES",
+      "confidence": 96.0,
+      "bbox": {
+        "x": 119,
+        "y": 1129,
+        "width": 102,
+        "height": 22
+      },
+      "block_num": 4,
+      "par_num": 1,
+      "line_num": 13
+    },
+    {
+      "text": "6%",
+      "confidence": 95.0,
+      "bbox": {
+        "x": 237,
+        "y": 1129,
+        "width": 24,
+        "height": 22
+      },
+      "block_num": 4,
+      "par_num": 1,
+      "line_num": 13
+    },
+    {
+      "text": "GST",
+      "confidence": 96.0,
+      "bbox": {
+        "x": 277,
+        "y": 1128,
+        "width": 38,
+        "height": 22
+      },
+      "block_num": 4,
+      "par_num": 1,
+      "line_num": 13
+    },
+    {
+      "text": "6.17",
+      "confidence": 92.0,
+      "bbox": {
+        "x": 504,
+        "y": 1126,
+        "width": 50,
+        "height": 23
+      },
+      "block_num": 4,
+      "par_num": 1,
+      "line_num": 13
+    },
+    {
+      "text": "Thank",
+      "confidence": 96.0,
+      "bbox": {
+        "x": 78,
+        "y": 1227,
+        "width": 63,
+        "height": 23
+      },
+      "block_num": 5,
+      "par_num": 1,
+      "line_num": 1
+    },
+    {
+      "text": "You",
+      "confidence": 96.0,
+      "bbox": {
+        "x": 158,
+        "y": 1227,
+        "width": 37,
+        "height": 22
+      },
+      "block_num": 5,
+      "par_num": 1,
+      "line_num": 1
+    },
+    {
+      "text": "and",
+      "confidence": 96.0,
+      "bbox": {
+        "x": 211,
+        "y": 1225,
+        "width": 38,
+        "height": 24
+      },
+      "block_num": 5,
+      "par_num": 1,
+      "line_num": 1
+    },
+    {
+      "text": "Please",
+      "confidence": 96.0,
+      "bbox": {
+        "x": 264,
+        "y": 1225,
+        "width": 78,
+        "height": 23
+      },
+      "block_num": 5,
+      "par_num": 1,
+      "line_num": 1
+    },
+    {
+      "text": "Guest",
+      "confidence": 95.0,
+      "bbox": {
+        "x": 51,
+        "y": 1260,
+        "width": 63,
+        "height": 22
+      },
+      "block_num": 5,
+      "par_num": 1,
+      "line_num": 2
+    },
+    {
+      "text": "Relations",
+      "confidence": 96.0,
+      "bbox": {
+        "x": 131,
+        "y": 1259,
+        "width": 118,
+        "height": 22
+      },
+      "block_num": 5,
+      "par_num": 1,
+      "line_num": 2
+    },
+    {
+      "text": "Center",
+      "confidence": 83.0,
+      "bbox": {
+        "x": 265,
+        "y": 1259,
+        "width": 77,
+        "height": 21
+      },
+      "block_num": 5,
+      "par_num": 1,
+      "line_num": 2
+    },
+    {
+      "text": ":",
+      "confidence": 16.0,
+      "bbox": {
+        "x": 362,
+        "y": 1265,
+        "width": 3,
+        "height": 14
+      },
+      "block_num": 5,
+      "par_num": 1,
+      "line_num": 2
+    },
+    {
+      "text": "13",
+      "confidence": 95.0,
+      "bbox": {
+        "x": 390,
+        "y": 1258,
+        "width": 17,
+        "height": 21
+      },
+      "block_num": 5,
+      "par_num": 1,
+      "line_num": 2
+    }
+  ]
+}
