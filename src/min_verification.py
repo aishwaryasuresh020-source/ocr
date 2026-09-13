@@ -49,7 +49,7 @@ from src.dependency_graph import fields_influencing_decision
 
 # Threshold below which a decision-relevant field is treated as
 # "possibly misread entirely" and gets decision-space probes added.
-LOW_CONFIDENCE_THRESHOLD = 70.0
+LOW_CONFIDENCE_THRESHOLD = 85.0
 
 
 # ---------------------------------------------------------
