@@ -1,0 +1,10 @@
+{
+  "name": "default",
+  "threshold": null,
+  "currency": "INR",
+  "labels": {
+    "above": "MANAGER_REVIEW",
+    "below": "AUTO_APPROVE",
+    "missing": "REVIEW"
+  }
+}

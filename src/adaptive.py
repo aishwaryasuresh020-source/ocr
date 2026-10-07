@@ -17,12 +17,12 @@ a human reviewer would see. The trace is also what proves the
 "stop once the decision becomes invariant" property of the invention.
 
 Public API:
-    adaptive_verify(fields, uncertain, provenance, ground_truth, graph)
+    adaptive_verify(fields, uncertain, provenance, ground_truth, graph, policy)
         -> (verified_fields, trace, info)
 """
 
 from src.candidates import generate_candidates
-from src.decision import decision_function, VERIFICATION_COST
+from src.decision import decision_function, VERIFICATION_COST, load_policy, validate_policy
 from src.dependency_graph import fields_influencing_decision
 from src.impact import decision_impact_scores
 from src.min_verification import (
@@ -36,7 +36,7 @@ from src.min_verification import (
 # Select next field to verify
 # ---------------------------------------------------------
 
-def _select_next(fields, remaining, provenance, graph):
+def _select_next(fields, remaining, provenance, graph, policy=None):
     """
     Pick the next field to verify.
 
@@ -48,7 +48,7 @@ def _select_next(fields, remaining, provenance, graph):
     sub_uncertain = {f: {"reason": "remaining"} for f in remaining}
 
     impacts = decision_impact_scores(
-        fields, sub_uncertain, provenance, graph
+        fields, sub_uncertain, provenance, graph, policy
     )
 
     def sort_key(f):
@@ -64,7 +64,7 @@ def _select_next(fields, remaining, provenance, graph):
 # Adaptive loop
 # ---------------------------------------------------------
 
-def adaptive_verify(fields, uncertain, provenance, ground_truth, graph):
+def adaptive_verify(fields, uncertain, provenance, ground_truth, graph, policy=None):
     """
     Sequentially verify fields until the decision is invariant.
 
@@ -75,8 +75,9 @@ def adaptive_verify(fields, uncertain, provenance, ground_truth, graph):
         info            -- summary dict with 'steps' == number of
                            verification actions actually performed
     """
+    validate_policy(policy, require_threshold=True)
     candidates_map = {
-        f: _candidate_values(f, provenance, fields, graph)
+        f: _candidate_values(f, provenance, fields, graph, policy)
         for f in uncertain
     }
 
@@ -93,18 +94,18 @@ def adaptive_verify(fields, uncertain, provenance, ground_truth, graph):
         # Check invariance BEFORE selecting anything.
         # If already invariant, stop — no verification needed.
         if decision_invariant(
-            verified, remaining, candidates_map, decision_function
+            verified, remaining, candidates_map, decision_function, policy
         ):
             break
 
         # Select the next field and count this as a real step.
         step += 1
-        field = _select_next(verified, remaining, provenance, graph)
+        field = _select_next(verified, remaining, provenance, graph, policy)
 
         # Compute current impact for the trace.
         sub_uncertain = {field: {"reason": "selected"}}
         impact_info = decision_impact_scores(
-            verified, sub_uncertain, provenance, graph
+            verified, sub_uncertain, provenance, graph, policy
         ).get(field, {})
         impact = impact_info.get("impact", 0.0)
 
@@ -117,7 +118,7 @@ def adaptive_verify(fields, uncertain, provenance, ground_truth, graph):
         total_cost += cost
 
         invariant_now = decision_invariant(
-            verified, remaining, candidates_map, decision_function
+            verified, remaining, candidates_map, decision_function, policy
         )
 
         trace.append({
@@ -125,17 +126,17 @@ def adaptive_verify(fields, uncertain, provenance, ground_truth, graph):
             "field": field,
             "impact": impact,
             "cost": cost,
-            "decision_after": decision_function(verified),
+            "decision_after": decision_function(verified, policy),
             "invariant_after": invariant_now,
         })
 
     info = {
         "steps": step,
         "total_cost": total_cost,
-        "final_decision": decision_function(verified),
+        "final_decision": decision_function(verified, policy),
         "remaining_uncertain": sorted(remaining),
         "terminated_by_invariance": decision_invariant(
-            verified, remaining, candidates_map, decision_function
+            verified, remaining, candidates_map, decision_function, policy
         ),
     }
     return verified, trace, info
@@ -146,12 +147,18 @@ def adaptive_verify(fields, uncertain, provenance, ground_truth, graph):
 # ---------------------------------------------------------
 
 if __name__ == "__main__":
+    import argparse
     from pathlib import Path
     from src.field_extractor import load_ocr_result, extract_fields
     from src.uncertainty import detect_uncertainty
     from src.dependency_graph import build_graph
 
-    graph = build_graph()
+    parser = argparse.ArgumentParser(description="Run adaptive verification")
+    parser.add_argument("--policy", help="Policy JSON path")
+    parser.add_argument("--threshold", type=float, help="Deployment threshold override")
+    args = parser.parse_args()
+    policy = load_policy(args.policy, args.threshold)
+    graph = build_graph(policy)
     files = sorted(Path("ocr_results/train").glob("*.json"))[:10]
 
     for f in files:
@@ -161,12 +168,12 @@ if __name__ == "__main__":
         gt = load_ground_truth(f.stem, split="train")
 
         verified, trace, info = adaptive_verify(
-            fields, uncertain, prov, gt, graph
+            fields, uncertain, prov, gt, graph, policy
         )
 
         print("\n" + "=" * 70)
         print(f"{f.name}")
-        print(f"  initial decision : {decision_function(fields)}")
+        print(f"  initial decision : {decision_function(fields, policy)}")
         print(f"  final decision   : {info['final_decision']}")
         print(f"  total cost       : {info['total_cost']}")
         print(f"  steps            : {info['steps']}")

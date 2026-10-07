@@ -20,13 +20,13 @@ This is the module that turns "uncertainty" into "decision risk".
 
 Public API
 ----------
-decision_impact_scores(fields, uncertain, provenance, graph) -> dict
+decision_impact_scores(fields, uncertain, provenance, graph, policy) -> dict
 """
 
 import math
 
 from src.candidates import generate_candidates
-from src.decision import decision_function
+from src.decision import decision_function, load_policy, validate_policy
 from src.dependency_graph import fields_influencing_decision
 
 
@@ -68,7 +68,7 @@ def _normalize_entropy(entropy):
 # Public API
 # ---------------------------------------------------------
 
-def decision_impact_scores(fields, uncertain, provenance, graph):
+def decision_impact_scores(fields, uncertain, provenance, graph, policy=None):
     """
     Return {field_name: impact_info} for every uncertain field.
 
@@ -82,8 +82,9 @@ def decision_impact_scores(fields, uncertain, provenance, graph):
             "note":                   optional str
         }
     """
+    validate_policy(policy, require_threshold=True)
     relevant = fields_influencing_decision(graph)
-    base_decision = decision_function(fields)
+    base_decision = decision_function(fields, policy)
 
     scores = {}
 
@@ -135,7 +136,7 @@ def decision_impact_scores(fields, uncertain, provenance, graph):
             modified[field_name] = c["value"]
             outcomes.append({
                 "candidate": c["value"],
-                "decision":  decision_function(modified),
+                "decision":  decision_function(modified, policy),
                 "weight":    c["weight"],
                 "reason":    c["reason"],
             })
@@ -160,24 +161,30 @@ def decision_impact_scores(fields, uncertain, provenance, graph):
 # ---------------------------------------------------------
 
 if __name__ == "__main__":
+    import argparse
     from pathlib import Path
     from src.field_extractor import load_ocr_result, extract_fields
     from src.uncertainty import detect_uncertainty
     from src.dependency_graph import build_graph
 
-    graph = build_graph()
+    parser = argparse.ArgumentParser(description="Inspect decision impact")
+    parser.add_argument("--policy", help="Policy JSON path")
+    parser.add_argument("--threshold", type=float, help="Deployment threshold override")
+    args = parser.parse_args()
+    policy = load_policy(args.policy, args.threshold)
+    graph = build_graph(policy)
     files = sorted(Path("ocr_results/train").glob("*.json"))[:8]
 
     for f in files:
         r = load_ocr_result(f)
         fields, _, prov = extract_fields(r)
         uncertain = detect_uncertainty(fields, prov)
-        impacts = decision_impact_scores(fields, uncertain, prov, graph)
+        impacts = decision_impact_scores(fields, uncertain, prov, graph, policy)
 
         print("\n" + "=" * 65)
         print(f"{f.name}")
         print(f"  total     : {fields['total']}")
-        print(f"  decision  : {decision_function(fields)}")
+        print(f"  decision  : {decision_function(fields, policy)}")
         print(f"  uncertain : {list(uncertain.keys())}")
         print("  impacts   :")
         for fname, info in impacts.items():

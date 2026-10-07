@@ -22,11 +22,11 @@ Ground truth stands in for human/system verification in this prototype.
 """
 
 from pathlib import Path
-from collections import defaultdict
+import argparse
 
 from src.field_extractor import load_ocr_result, extract_fields
 from src.uncertainty import detect_uncertainty
-from src.decision import decision_function, VERIFICATION_COST
+from src.decision import decision_function, VERIFICATION_COST, load_policy, validate_policy
 from src.dependency_graph import build_graph
 from src.min_verification import load_ground_truth
 from src.adaptive import adaptive_verify
@@ -40,11 +40,12 @@ CONFIDENCE_THRESHOLD = 70.0
 # Per-invoice evaluation
 # ---------------------------------------------------------
 
-def evaluate_one(sample_id, split, graph):
+def evaluate_one(sample_id, split, graph, policy=None):
     """
     Return a dict with ground-truth decision and per-method results,
     or None if OCR output or ground truth is missing.
     """
+    validate_policy(policy, require_threshold=True)
     ocr_path = Path(f"ocr_results/{split}/{sample_id}.json")
     if not ocr_path.exists():
         return None
@@ -57,12 +58,12 @@ def evaluate_one(sample_id, split, graph):
     if gt is None:
         return None
 
-    gt_decision = decision_function(gt)
+    gt_decision = decision_function(gt, policy)
     results = {}
 
     # --- Baseline 1: verify nothing ---
     results["verify_nothing"] = {
-        "final_decision": decision_function(fields),
+        "final_decision": decision_function(fields, policy),
         "verifications": 0,
         "cost": 0,
     }
@@ -73,7 +74,7 @@ def evaluate_one(sample_id, split, graph):
         if gt.get(f) is not None:
             verified[f] = gt[f]
     results["verify_all_fields"] = {
-        "final_decision": decision_function(verified),
+        "final_decision": decision_function(verified, policy),
         "verifications": len(ALL_FIELDS),
         "cost": sum(VERIFICATION_COST.get(f, 1) for f in ALL_FIELDS),
     }
@@ -87,7 +88,7 @@ def evaluate_one(sample_id, split, graph):
         n += 1
         cost += VERIFICATION_COST.get(f, 1)
     results["verify_all_uncertain"] = {
-        "final_decision": decision_function(verified),
+        "final_decision": decision_function(verified, policy),
         "verifications": n,
         "cost": cost,
     }
@@ -105,13 +106,13 @@ def evaluate_one(sample_id, split, graph):
             n += 1
             cost += VERIFICATION_COST.get(f, 1)
     results["verify_by_confidence"] = {
-        "final_decision": decision_function(verified),
+        "final_decision": decision_function(verified, policy),
         "verifications": n,
         "cost": cost,
     }
 
     # --- Method: adaptive (ours) ---
-    _, _, info = adaptive_verify(fields, uncertain, prov, gt, graph)
+    _, _, info = adaptive_verify(fields, uncertain, prov, gt, graph, policy)
     results["adaptive_ours"] = {
         "final_decision": info["final_decision"],
         "verifications": info["steps"],
@@ -129,7 +130,8 @@ def evaluate_one(sample_id, split, graph):
 # Aggregate over a split
 # ---------------------------------------------------------
 
-def evaluate_split(split, graph):
+def evaluate_split(split, graph, policy=None):
+    validate_policy(policy, require_threshold=True)
     ocr_dir = Path(f"ocr_results/{split}")
     if not ocr_dir.exists():
         print(f"[skip] no OCR output for split: {split}")
@@ -152,7 +154,7 @@ def evaluate_split(split, graph):
     skipped = 0
 
     for sample_id in ids:
-        row = evaluate_one(sample_id, split, graph)
+        row = evaluate_one(sample_id, split, graph, policy)
         if row is None:
             skipped += 1
             continue
@@ -228,7 +230,12 @@ def print_table(result):
 # ---------------------------------------------------------
 
 if __name__ == "__main__":
-    graph = build_graph()
+    parser = argparse.ArgumentParser(description="Evaluate OCR verification policies")
+    parser.add_argument("--policy", help="Policy JSON path")
+    parser.add_argument("--threshold", type=float, help="Deployment threshold override")
+    args = parser.parse_args()
+    policy = load_policy(args.policy, args.threshold)
+    graph = build_graph(policy)
     for split in ("train", "test"):
-        result = evaluate_split(split, graph)
+        result = evaluate_split(split, graph, policy)
         print_table(result)

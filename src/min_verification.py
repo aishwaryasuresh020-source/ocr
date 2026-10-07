@@ -42,7 +42,8 @@ from src.candidates import generate_candidates
 from src.decision import (
     decision_function,
     VERIFICATION_COST,
-    DECISION_THRESHOLD,
+    load_policy,
+    validate_policy,
 )
 from src.dependency_graph import fields_influencing_decision
 
@@ -88,7 +89,7 @@ def load_ground_truth(sample_id: str, split: str = "train") -> Optional[dict]:
 # Candidate value space for a field
 # ---------------------------------------------------------
 
-def _candidate_values(field_name, provenance, fields, graph):
+def _candidate_values(field_name, provenance, fields, graph, policy):
     """
     Return the list of plausible values for one uncertain field.
 
@@ -96,12 +97,14 @@ def _candidate_values(field_name, provenance, fields, graph):
     - LOW-CONFIDENCE decision-relevant field: candidates + probes.
     - Otherwise: candidates from candidates.py (or the current value).
     """
+    validate_policy(policy, require_threshold=True)
     prov = provenance.get(field_name)
     relevant = field_name in fields_influencing_decision(graph)
 
     if prov is None:
         if relevant:
-            return [0.0, DECISION_THRESHOLD * 10]
+            threshold = float(validate_policy(policy)["threshold"])
+            return [0.0, threshold * 10]
         return [None]
 
     values = [
@@ -117,7 +120,8 @@ def _candidate_values(field_name, provenance, fields, graph):
     if relevant and field_name == "total":
         conf = prov.get("confidence", 100.0)
         if conf < LOW_CONFIDENCE_THRESHOLD:
-            for probe in (0.01, DECISION_THRESHOLD * 10):
+            threshold = float(validate_policy(policy)["threshold"])
+            for probe in (0.01, threshold * 10):
                 if probe not in values:
                     values.append(probe)
 
@@ -129,11 +133,12 @@ def _candidate_values(field_name, provenance, fields, graph):
 # ---------------------------------------------------------
 
 def decision_invariant(verified_fields, remaining_uncertain,
-                       candidates_map, decision_function):
+                       candidates_map, decision_function, policy=None):
     """
     True iff every combination of remaining candidate values yields the
     same decision, given verified_fields as the baseline.
     """
+    validate_policy(policy, require_threshold=True)
     remaining = list(remaining_uncertain)
     if not remaining:
         return True
@@ -145,7 +150,7 @@ def decision_invariant(verified_fields, remaining_uncertain,
         test = dict(verified_fields)
         for f, v in zip(remaining, combo):
             test[f] = v
-        decisions.add(decision_function(test))
+        decisions.add(decision_function(test, policy))
         if len(decisions) > 1:
             return False
 
@@ -157,7 +162,7 @@ def decision_invariant(verified_fields, remaining_uncertain,
 # ---------------------------------------------------------
 
 def minimum_verification_set(fields, uncertain, provenance, ground_truth,
-                             graph, cost_table=None):
+                             graph, policy=None, cost_table=None):
     """
     Enumerate all subsets of the uncertain fields, keep the ones that
     stabilize the decision, return the cheapest.
@@ -166,11 +171,12 @@ def minimum_verification_set(fields, uncertain, provenance, ground_truth,
     """
     if cost_table is None:
         cost_table = VERIFICATION_COST
+    validate_policy(policy, require_threshold=True)
 
     uncertain_fields = sorted(uncertain.keys())
 
     candidates_map = {
-        f: _candidate_values(f, provenance, fields, graph)
+        f: _candidate_values(f, provenance, fields, graph, policy)
         for f in uncertain_fields
     }
 
@@ -197,7 +203,7 @@ def minimum_verification_set(fields, uncertain, provenance, ground_truth,
             cost = sum(cost_table.get(f, 1) for f in V)
 
             if decision_invariant(verified, remaining, candidates_map,
-                                  decision_function):
+                                  decision_function, policy):
                 subset_scores.append((tuple(sorted(V)), cost, True))
                 if cost < best_cost:
                     best_cost = cost
@@ -225,11 +231,17 @@ def minimum_verification_set(fields, uncertain, provenance, ground_truth,
 # ---------------------------------------------------------
 
 if __name__ == "__main__":
+    import argparse
     from src.field_extractor import load_ocr_result, extract_fields
     from src.uncertainty import detect_uncertainty
     from src.dependency_graph import build_graph
 
-    graph = build_graph()
+    parser = argparse.ArgumentParser(description="Find minimum verification sets")
+    parser.add_argument("--policy", help="Policy JSON path")
+    parser.add_argument("--threshold", type=float, help="Deployment threshold override")
+    args = parser.parse_args()
+    policy = load_policy(args.policy, args.threshold)
+    graph = build_graph(policy)
     files = sorted(Path("ocr_results/train").glob("*.json"))[:10]
 
     print("=" * 75)
@@ -244,12 +256,12 @@ if __name__ == "__main__":
         gt = load_ground_truth(f.stem, split="train")
 
         V_star, cost, info = minimum_verification_set(
-            fields, uncertain, prov, gt, graph
+            fields, uncertain, prov, gt, graph, policy
         )
 
         unc_str = ",".join(sorted(uncertain.keys())) or "-"
         v_str   = ",".join(sorted(V_star)) or "-"
-        dec     = decision_function(fields)
+        dec     = decision_function(fields, policy)
 
         print(f"{f.stem:18s} {dec:15s} {unc_str:28s} "
               f"{v_str:18s} {cost:>5d}")

@@ -140,11 +140,41 @@ Requires Python 3.10+ and Tesseract installed on the system.
 ## Notes on the decision task
 
 SROIE does not include a downstream decision label. The decision rule
-used here is a synthetic threshold classifier on the extracted total
-(<= 12.6 RM -> AUTO_APPROVE, otherwise MANAGER_REVIEW), with the
-threshold set at the median of the parsed-total distribution. This is
-disclosed openly: the contribution is the verification mechanism, not
-the decision rule. The mechanism applies to any OCR-to-decision pipeline.
+is a policy-driven threshold classifier on the extracted total. The
+verification mechanism is independent of the configured threshold.
+
+## Deployment policy
+
+`config/policy.json` contains the decision labels, currency, and threshold.
+The sample threshold is `null` by design. Supply a deployment threshold
+explicitly; the application asks for it on each upload, and the command-line
+tools accept `--threshold` or a policy file with a numeric threshold. A
+policy without a threshold is rejected before a decision is evaluated.
+The earlier SROIE evaluation used a dataset-derived threshold and is only
+preserved in the saved historical result files.
+
+Examples:
+
+    python3 -m src.evaluate --threshold 12.6
+    python3 -m src.evaluate --threshold 1000
+    python3 run_demo.py --threshold 12.6
+    python3 app.py
+
+### Uploading documents outside SROIE
+
+The web portal does not load labels or ground truth for an upload. It runs
+OCR, extracts receipt/invoice-style fields, and applies the threshold entered
+on the upload form. Common amount labels such as `Total`,
+`Grand Total`, `Amount Due`, `Balance Due`, and `Invoice Total` are
+recognized. Ground truth is only used by the offline evaluation scripts
+when available.
+
+This is not a universal document-understanding system: the current extractor
+is designed for receipts and invoices, and the downstream rule is an amount
+threshold. For another document type or decision (for example, eligibility
+based on dates or multiple fields), define its fields and business rule
+explicitly before relying on the result. If no amount can be extracted, the
+pipeline returns `REVIEW` and marks the missing total for verification.
 
 ---
 

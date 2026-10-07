@@ -19,31 +19,22 @@ the rest of the pipeline.
 
 Public API
 ----------
-build_graph()                 -> {"fields": {...}, "conditions": {...}}
+build_graph(policy)           -> {"fields": {...}, "conditions": {...}}
 fields_influencing_decision() -> set of field names that matter
 """
 
-from src.decision import decision_conditions
+from src.decision import default_policy, decision_conditions, load_policy, validate_policy
 
 
 # ---------------------------------------------------------
 # The graph itself
 # ---------------------------------------------------------
 
-# field_name -> list of condition names it can influence
-FIELD_TO_CONDITIONS = {
-    "total":   ["total_present", "total_le_threshold"],
-    "company": [],
-    "date":    [],
-    "address": [],
-}
-
-
 # ---------------------------------------------------------
 # Public API
 # ---------------------------------------------------------
 
-def build_graph():
+def build_graph(policy=None):
     """
     Return the full graph structure:
 
@@ -55,10 +46,13 @@ def build_graph():
     The conditions come from decision.py so that the graph and the
     decision function can never drift out of sync.
     """
-    return {
-        "fields":     dict(FIELD_TO_CONDITIONS),
-        "conditions": decision_conditions(),
-    }
+    if policy is None:
+        policy = default_policy()
+    validate_policy(policy, require_threshold=False)
+    conditions = decision_conditions(policy)
+    fields = {name: [] for name in ("company", "date", "address", "total")}
+    fields["total"] = list(conditions)
+    return {"fields": fields, "conditions": conditions}
 
 
 def fields_influencing_decision(graph):
@@ -74,7 +68,13 @@ def fields_influencing_decision(graph):
 # ---------------------------------------------------------
 
 if __name__ == "__main__":
-    graph = build_graph()
+    import argparse
+
+    parser = argparse.ArgumentParser(description="Display policy decision dependencies")
+    parser.add_argument("--policy", help="Policy JSON path")
+    parser.add_argument("--threshold", type=float, help="Deployment threshold override")
+    args = parser.parse_args()
+    graph = build_graph(load_policy(args.policy, args.threshold, require_threshold=False))
 
     print("=" * 55)
     print("DECISION DEPENDENCY GRAPH")

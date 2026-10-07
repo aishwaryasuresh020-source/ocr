@@ -260,7 +260,7 @@ def extract_address_with_provenance(lines, company_text=None):
 # 5. MONEY EXTRACTION AND NORMALIZATION
 # ---------------------------------------------------------
 
-MONEY_PATTERN = r"\b\d+(?:[,.]\d{2})\b"
+MONEY_PATTERN = r"(?<!\w)-?\d{1,3}(?:[,. ]\d{3})*(?:[,.]\d{2})\b|(?<!\w)-?\d+(?:[,.]\d{2})\b"
 
 
 def extract_money_values(text):
@@ -274,7 +274,9 @@ def normalize_money(value):
     "1,234.56"  -> 1234.56
     "1.234,56"  -> 1234.56
     """
-    value = value.strip()
+    value = re.sub(r"[^\d,.\-]", "", value.strip())
+    if not value:
+        return None
 
     if "." in value and "," in value:
         if value.rfind(".") > value.rfind(","):
@@ -301,10 +303,16 @@ def normalize_money(value):
 def extract_total_with_provenance(lines):
     candidates = []
 
+    # Common labels used across receipts, invoices, and statements.
+    total_label = re.compile(
+        r"(?i)\b(?:grand\s+total|amount\s+due|total\s+due|balance\s+due|"
+        r"invoice\s+total|net\s+total|total|amount\s+payable|payable)\b"
+    )
+
     for index, line in enumerate(lines):
         text = line["text"].strip()
 
-        if not re.search(r"(?i)\btotal\b", text):
+        if not total_label.search(text):
             continue
 
         for value in extract_money_values(text):
