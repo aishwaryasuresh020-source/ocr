@@ -54,6 +54,18 @@ We claim:
    executing verification actions on fields in V* and terminating verification when the downstream decision becomes invariant.
 
 9. A non-transitory computer-readable medium storing instructions that, when executed by one or more processors, cause the one or more processors to perform the method of claim 8.
+
+10. The system of claim 1, wherein the minimum-cost verification
+    set reduces a number of human verification actions per
+    document by at least 50 percent compared to verifying every
+    uncertain field, while preserving downstream decision
+    accuracy.
+
+11. The system of claim 1, wherein the Counterfactual Decision
+    Impact Score is computed as a normalized weighted entropy
+    over the decision labels produced by the constrained
+    counterfactual interpretations, and wherein the score is zero
+    when all interpretations produce the same decision label.
 '''
 
 Path("docs/claims.md").write_text(content, encoding="utf-8")

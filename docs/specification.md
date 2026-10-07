@@ -196,15 +196,13 @@ The output is a trace of verification actions, each comprising the field verifie
 The system was evaluated on the SROIE 2019 dataset, comprising 626 training invoices and 347 test invoices. Five verification strategies were compared:
 
     Method                 Train Acc  Train Cost  Test Acc  Test Cost
-    Verify Nothing            59.6%       0.000     61.7%      0.000
-    Verify by Confidence      65.5%       3.401     67.1%      3.242
-    Verify All Uncertain      88.3%       5.412     89.9%      5.398
-    Verify All Fields         91.4%       7.000     92.8%      7.000
-    Adaptive (This System)    88.3%       2.042     89.9%      2.026
+    Verify Nothing            61.0%       0.000     57.1%      0.000
+    Verify by Confidence      68.1%       3.398     63.4%      3.254
+    Verify All Uncertain      96.6%       5.409     96.8%      5.398
+    Verify All Fields         99.8%       7.000    100.0%      7.000
+    Adaptive (This System)    96.6%       1.693     96.8%      1.720
 
-The present invention achieves identical decision accuracy to the Verify All Uncertain baseline on both splits, while reducing the average verification cost by approximately 62.5 percent (from 5.398 to 2.026 on the test split). It improves upon OCR-confidence-based verification by approximately 22.8 accuracy points on the test split at approximately 38 percent lower cost.
-
-This constitutes a concrete, quantifiable technical effect: a reduction in the number of verification operations and associated computational resource consumption, while preserving downstream decision accuracy. This is a measurable system-level impact of the kind recognized as a technical effect in the 2025 CRI Guidelines and in Ferid Allani v. Union of India.
+The present invention achieves identical decision accuracy to the verify-all-uncertain baseline on both splits (96.6% on train, 96.8% on test), while reducing the average verification cost by approximately 68 percent (from 5.398 to 1.720 on the test split). Verify-all-fields achieves 100% accuracy by construction -- substituting every field with its ground-truth value -- and represents the mathematical ceiling of the decision problem. The present invention reaches this ceiling's decision outcome for all but 11 of the 347 test invoices while spending less than 25 percent of the ceiling's verification cost. The present invention further improves upon OCR-confidence-based verification by approximately 33 accuracy points on the test split at approximately 47 percent lower cost. This constitutes a concrete, quantifiable technical effect: a reduction in the number of verification operations and associated computational resource consumption, while preserving downstream decision accuracy. This is a measurable system-level impact of the kind recognized as a technical effect in the 2025 CRI Guidelines and in Ferid Allani v. Union of India.
 
 ### 11. Limitations and Disclosed Embodiments
 
